@@ -3,11 +3,9 @@
 {
   imports = [ ./hardware-configuration.nix ];
 
-  services.sing-box = {
-    enable = true;
-    settings = {
-      log.level = "debug";
-    };
+  services.sing-box.enable = true;
+  services.sing-box.settings = {
+    log.level = "debug";
   };
 
   networking = {
@@ -26,15 +24,13 @@
   environment.systemPackages = with pkgs; [
   ];
 
-  programs.git = {
-    enable = true;
-    config = {
-      user.name  = "Minghong Xu";
-      user.email = "minghong@minghongxu.name";
-      init.defaultBranch = "main";
-      pull.rebase = true;
-      credential.helper = "store";
-    };
+  programs.git.enable = true;
+  programs.git.config = {
+    user.name  = "Minghong Xu";
+    user.email = "minghong@minghongxu.name";
+    init.defaultBranch = "main";
+    pull.rebase = true;
+    credential.helper = "store";
   };
 
   services.openssh = {

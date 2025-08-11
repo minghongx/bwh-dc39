@@ -33,6 +33,7 @@
       user.email = "minghong@minghongxu.name";
       init.defaultBranch = "main";
       pull.rebase = true;
+      credential.helper = "store";
     };
   };
 

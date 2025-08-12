@@ -12,7 +12,8 @@
     hostName = "bwh-dc39";
     domain = "minghongxu.name";
 
-    networkmanager.enable = true; # TODO: configure network interfaces manually
+    interfaces.ens18.useDHCP = true;
+    interfaces.ens19.useDHCP = true; # TODO: what is ens19 used for?
 
     firewall = {
       enable = false;

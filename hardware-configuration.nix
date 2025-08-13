@@ -8,7 +8,7 @@
     [ (modulesPath + "/profiles/qemu-guest.nix")
     ];
 
-  boot.initrd.availableKernelModules = [ "ata_piix" "xhci_pci" "sd_mod" ];
+  boot.initrd.availableKernelModules = [ "ata_piix" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ ];
   boot.extraModulePackages = [ ];

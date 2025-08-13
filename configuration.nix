@@ -46,8 +46,6 @@
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGaBqZ+yDtH2ttPWK32R07c50+a/QdshOfv++EDKfv5m minghongxu@thinkbook"
   ];
 
-  services.qemuGuest.enable = true;
-
   time.timeZone = "Asia/Tokyo";
 
   # https://unix.stackexchange.com/questions/62316/

@@ -1,7 +1,7 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, modulesPath, ... }:
 
 {
-  imports = [ ./hardware-configuration.nix ];
+  imports = [ (modulesPath + "/profiles/qemu-guest.nix") ];
 
   services.sing-box.enable = true;
   services.sing-box.settings = {
@@ -51,9 +51,17 @@
   # https://unix.stackexchange.com/questions/62316/
   i18n.defaultLocale = "en_GB.UTF-8"; # English, UK, UTF-8 encoding
 
-  boot.loader.grub = {
-    enable = true;
-    device = "/dev/sda";
+  boot = {
+    initrd.availableKernelModules = [ "ata_piix" "sd_mod" ];
+    initrd.kernelModules = [ ];
+
+    kernelModules = [ ];
+    extraModulePackages = [ ];
+
+    loader.grub = {
+      enable = true;
+      device = "/dev/sda";
+    };
   };
 
   console = {
@@ -62,5 +70,15 @@
     packages = [ pkgs.terminus_font ];
   };
 
+  # TODO: use nix-community/disko for declarative disk partitioning and formatting
+  fileSystems."/" =
+    { device = "/dev/disk/by-uuid/332d0a2f-e746-494c-9068-f89cd5f756f5";
+      fsType = "ext4";
+    };
+  swapDevices =
+    [ { device = "/dev/disk/by-uuid/9971938e-638b-4488-9866-081783054998"; }
+    ];
+
+  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   system.stateVersion = "24.11";
 }

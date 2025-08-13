@@ -29,7 +29,7 @@
   programs.git.config = {
     user.name  = "Minghong Xu";
     user.email = "minghong@minghongxu.name";
-    init.defaultBranch = "main";
+    init.defaultBranch = "canon";
     pull.rebase = true;
     credential.helper = "store";
   };

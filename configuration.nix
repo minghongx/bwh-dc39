@@ -23,7 +23,6 @@
   };
 
   # Enable BBR congestion control
-  boot.kernelModules = [ "sch_cake" "tcp_bbr" ];
   boot.kernel.sysctl."net.core.default_qdisc" = "cake";
   boot.kernel.sysctl."net.ipv4.tcp_congestion_control" = "bbr";
 
